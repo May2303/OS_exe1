@@ -9,4 +9,4 @@ findPhone: findPhone.c
 	$(CC) -o findPhone findPhone.c
 
 clean:
-	rm -f add2PB findPhone
+	rm -f add2PB findPhone 
