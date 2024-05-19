@@ -1,16 +1,20 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -std=c99 -pg
+CFLAGS = -Wall -Wextra -std=c11 -pg
+TARGET = q5
+OBJS = main5.o maxSubArraySum.o
 
-all: max_subarray_n max_subarray_n2 max_subarray_n3
+all: $(TARGET)
 
-max_subarray_n: max_subarray_n.c
-	$(CC) $(CFLAGS) -o $@ $< -lm
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
 
-max_subarray_n2: max_subarray_n2.c
-	$(CC) $(CFLAGS) -o $@ $< -lm
+main5.o: main5.c q5.h
+	$(CC) $(CFLAGS) -c main5.c
 
-max_subarray_n3: max_subarray_n3.c
-	$(CC) $(CFLAGS) -o $@ $< -lm
+maxSubArraySum.o: maxSubArraySum.c q5.h
+	$(CC) $(CFLAGS) -c maxSubArraySum.c
 
 clean:
-	rm -f max_subarray_n max_subarray_n2 max_subarray_n3 gmon.out
+	rm -f $(TARGET) $(OBJS) gmon.out
+
+.PHONY: all clean
