@@ -64,7 +64,7 @@ void dijkstra(int graph[V][V], int src){
 }
 
 // driver's code
-int main(int argc, char const *argv []){
+int main(){
     int graph[V][V];
     /* Let us create the example graph discussed above */
     string row = "";
