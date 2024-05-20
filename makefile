@@ -6,55 +6,55 @@ LDFLAGS = -lm
 
 .PHONY: all clean
 
-all: dividedByZero outOfStack undefinedMemory poisson libpoisson.so q5 add2PB findPhone demo
+all: q1/dividedByZero q1/outOfStack q1/undefinedMemory q2/poisson q3/libpoisson.so q5/q5 q6/add2PB q6/findPhone q4/demo
 
-dividedByZero: dividedByZero.o
+q1/dividedByZero: q1/dividedByZero.o
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
-dividedByZero.o: dividedByZero.c
+q1/dividedByZero.o: q1/dividedByZero.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-outOfStack: outOfStack.o
+q1/outOfStack: q1/outOfStack.o
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
-outOfStack.o: outOfStack.c
+q1/outOfStack.o: q1/outOfStack.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-undefinedMemory: undefinedMemory.o
+q1/undefinedMemory: q1/undefinedMemory.o
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
-undefinedMemory.o: undefinedMemory.c
+q1/undefinedMemory.o: q1/undefinedMemory.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-poisson: poisson.o
+q2/poisson: q2/poisson.o
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
-poisson.o: poisson.c 
+q2/poisson.o: q2/poisson.c 
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-libpoisson.so: poisson.h
-	$(CC) $(CFLAGS) -shared -o $@ poisson.h $(LDFLAGS)
+q3/libpoisson.so: q3/poisson.h
+	$(CC) $(CFLAGS) -shared -o $@ $< $(LDFLAGS)
 
-q5: main5.o maxSubArraySum.o
+q5/q5: q5/main5.o q5/maxSubArraySum.o
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
-main5.o: main5.c q5.h
+q5/main5.o: q5/main5.c q5/q5.h
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-maxSubArraySum.o: maxSubArraySum.c q5.h
+q5/maxSubArraySum.o: q5/maxSubArraySum.c q5/q5.h
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-add2PB: add2PB.c
+q6/add2PB: q6/add2PB.c
 	$(CC) -o $@ $<
 
-findPhone: findPhone.c
+q6/findPhone: q6/findPhone.c
 	$(CC) -o $@ $<
 
-demo: gcob_q4.o
+q4/demo: q4/gcob_q4.o
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
 
-gcob_q4.o: gcob_q4.cpp 
+q4/gcob_q4.o: q4/gcob_q4.cpp 
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 clean:
-	rm -f dividedByZero outOfStack undefinedMemory poisson libpoisson.so q5 add2PB findPhone demo *.o
+	rm -f q1/dividedByZero q1/outOfStack q1/undefinedMemory q2/poisson q3/libpoisson.so q5/q5 q6/add2PB q6/findPhone q4/demo /.o
