@@ -23,7 +23,8 @@ int maxSubArraySum(int nums[], int size) {
 
 // Function to generate random numbers, run the algorithm, and measure time
 void run(int seed, int size) {
-    srand(seed); // Seed the random number generator
+    /* Intializes random number generator */
+    srand(seed); 
     int *nums = (int*)malloc(size * sizeof(int)); // Allocate memory for the array
     if (nums == NULL) {
         fprintf(stderr, "malloc failed.\n"); 
